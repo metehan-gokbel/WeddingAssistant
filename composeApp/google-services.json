@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "599538577624",
+    "project_id": "wedding-assistant-b4541",
+    "storage_bucket": "wedding-assistant-b4541.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:599538577624:android:6667d9370c36bb064ae7ad",
+        "android_client_info": {
+          "package_name": "org.wedding.assistant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "599538577624-71910kc909h1vet73920djqgmjb6oegt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.wedding.assistant",
+            "certificate_hash": "b1ef50de136429b20912b114ec2c4537718c2636"
+          }
+        },
+        {
+          "client_id": "599538577624-oo19usienhf2qroam3aq9cke0glgo55l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0zYIXfGEq-iDeMR04bZ3TZnjzolV7BBM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "599538577624-oo19usienhf2qroam3aq9cke0glgo55l.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "599538577624-k1j3hrk4v0cevmtp7rcauc6k9ihcecr7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.wedding.assistant.WeddingAssistant"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
