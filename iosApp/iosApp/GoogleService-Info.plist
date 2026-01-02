@@ -10,6 +10,8 @@
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>org.wedding.assistant.WeddingAssistant</string>
+	<key>CLIENT_ID</key>
+	<string>599538577624-oo19usienhf2qroam3aq9cke0glgo55l.apps.googleusercontent.com</string>
 	<key>PROJECT_ID</key>
 	<string>wedding-assistant-b4541</string>
 	<key>STORAGE_BUCKET</key>
@@ -26,5 +28,7 @@
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:599538577624:ios:11928c00b955e96f4ae7ad</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.599538577624-oo19usienhf2qroam3aq9cke0glgo55l</string>
 </dict>
 </plist>

@@ -2,12 +2,13 @@ import Foundation
 import UIKit
 import GoogleSignIn
 import FirebaseCore
+import ComposeApp
 
 final class GoogleSignInBridge {
 
     static func signIn() {
-        guard let clientID = FirebaseApp.app()?.options.clientID else {
-            print("Firebase clientID missing")
+        guard let clientID = resolveClientID() else {
+            GoogleBridgeKt.publishGoogleError(message: "Google clientID missing. Check GoogleService-Info.plist CLIENT_ID.")
             return
         }
 
@@ -20,20 +21,34 @@ final class GoogleSignInBridge {
 
         GIDSignIn.sharedInstance.signIn(withPresenting: vc) { result, error in
             if let error = error {
-                print("Google sign-in error: \(error.localizedDescription)")
+                GoogleBridgeKt.publishGoogleError(message: error.localizedDescription)
                 return
             }
 
             guard let idToken = result?.user.idToken?.tokenString else {
-                print("idToken null")
+                GoogleBridgeKt.publishGoogleError(message: "Google idToken null geldi")
                 return
             }
 
             let accessToken = result?.user.accessToken.tokenString
-            print("Google OK idToken: \(idToken.prefix(10))... accessToken: \(accessToken?.prefix(10) ?? "")")
-
-            // Buradan sonra Kotlin repo’na login yaptıracağız (sonraki adım)
+            GoogleBridgeKt.publishGoogleToken(idToken: idToken, accessToken: accessToken)
         }
+    }
+
+    private static func resolveClientID() -> String? {
+        if let id = FirebaseApp.app()?.options.clientID, !id.isEmpty {
+            return id
+        }
+        if let id = Bundle.main.object(forInfoDictionaryKey: "GIDClientID") as? String, !id.isEmpty {
+            return id
+        }
+        if let path = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist"),
+           let dict = NSDictionary(contentsOfFile: path),
+           let id = dict["CLIENT_ID"] as? String,
+           !id.isEmpty {
+            return id
+        }
+        return nil
     }
 
     private static func topViewController() -> UIViewController? {

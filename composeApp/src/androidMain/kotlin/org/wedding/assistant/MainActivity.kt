@@ -6,6 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import org.wedding.assistant.auth.publishGoogleError
+import org.wedding.assistant.auth.publishGoogleToken
 import org.wedding.assistant.platform.rememberAndroidGoogleSignInLauncher
 
 class MainActivity : ComponentActivity() {
@@ -16,9 +18,11 @@ class MainActivity : ComponentActivity() {
         setContent {
             val googleLauncher = rememberAndroidGoogleSignInLauncher(
                 onResult = { idToken, accessToken ->
-                    // burada loginVm.signInWithGoogle(...) çağır
+                    publishGoogleToken(idToken, accessToken)
                 },
-                onError = { /* state'e bas */ }
+                onError = { message ->
+                    publishGoogleError(message)
+                }
             )
 
             App(onGoogleClick = googleLauncher)

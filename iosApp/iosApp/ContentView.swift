@@ -8,8 +8,7 @@ struct ContentView: View {
             .ignoresSafeArea()
             .onAppear {
                 // Kotlin’e "Google butonuna basınca bunu çalıştır" diye handler veriyoruz
-                // İsim Xcode’da autocomplete ile çıkar: setIosGoogleClickHandler(...)
-                ComposeApp.setIosGoogleClickHandler(handler: { GoogleSignInBridge.signIn() })
+                IosCallbacksKt.setIosGoogleClickHandler(handler: { GoogleSignInBridge.signIn() })
             }
     }
 }

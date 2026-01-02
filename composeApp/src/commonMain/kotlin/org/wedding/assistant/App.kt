@@ -64,7 +64,7 @@ fun App(
                     onPasswordChange = loginVm::onPasswordChange,
                     onSignIn = loginVm::signIn,
                     onForgotPassword = { /* sonra */ },
-                    onGoogleSignIn = { onGoogleClick },
+                    onGoogleSignIn = { onGoogleClick() },
                     onCreateAccount = { route = AuthRoute.Register }
                 )
             }
@@ -101,9 +101,7 @@ fun App(
                     onRegister = { registerVm.signUp {
                         route = AuthRoute.Home
                     } },
-                    onGoogleRegister = {
-                        onGoogleClick
-                    },
+                    onGoogleRegister = { onGoogleClick() },
                     onGoToLogin = {
                         route = AuthRoute.Login
                     }
